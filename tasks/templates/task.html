@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'layout/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+{% block content %}
+<body data-bs-theme="dark" class="p-3 text-body bg-body">
+
+
+    <div>
+        {% for task in tasks %}
+        <div class="card text-bg-dark border-light mb-3">
+            {% if task.important %}
+            <div class="card-header text-danger-emphasis">{{task.title}}</div>
+            {% else %}
+            <div class="card-header">{{task.title}}</div>
+            {% endif %}
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{task.description}}</p>
+                    <footer class="blockquote-footer">{{task.completed|date:'Y m d - H:i'}} -<cite title="Source Title"> By: {{task.user.username}}</cite></footer>
+                </blockquote>
+                <a href="{% url 'task_details' task.id %}" class="btn btn-secondary">Modify</a>
+             </div>
+        </div>
+        {% endfor %}
+    </div>
+
+<a href="{% url 'create_task' %}" class="btn btn-primary">New Task</a>
+
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'layout/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a Task</title>
+</head>
+{% block content %}
+<body data-bs-theme="dark" class="p-3 text-body bg-body">
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 mt-5">
+
+                <form method="POST" class="card card-body">
+                    {% csrf_token %}
+                    {{ error }}
+                    <h1 class="text-center">Create Task</h1>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control bg-dark" id="title" name="title" placeholder="Title" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control bg-dark" id="description" name="description" placeholder="Drescribe your Task" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="important">Important</label>
+                        <input type="checkbox" class="bg-dark" id="important" name="important">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">Create</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}
+</html>

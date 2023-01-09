@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'layout/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% block content %}
+<body data-bs-theme="dark" class="p-3 text-body bg-body">
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 mt-5">
+
+                <form action="/singup/" method="post" class="card card-body">
+                    <h1 class="text-center">Sing Up</h1>
+                    {{error}}
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control bg-dark" id="username" name="username" aria-describedby="userHelp" placeholder="Username">
+                        <small id="userHelp" class="form-text text-muted">Required.Letters, digits and @/./+/-/_ only.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password1">Password:</label>
+                        <input type="password" class="form-control bg-dark" id="password1" name="password1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Password confirmation:</label>
+                        <input type="password" class="form-control bg-dark" id="password2" name="password2" placeholder="Password">
+                    </div>
+                    <button class="btn btn-primary mt-4">Sing up</button>
+                 </form>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}
+</html>
