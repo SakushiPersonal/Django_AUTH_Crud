@@ -23,10 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+            #SECURITY WARNING: don't run with debug turned on in production!
+
 #'django-insecure-_dd5=9ab13%4^8n6a^o^t4e#8oyx346cq)=r*cm4)@sl4l%g*^'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+
+DEBUG ='RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 
@@ -83,11 +85,15 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
+    #'default': {
+        #'ENGINE':'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',}
+    'default': {dj_database_url.config(
+        #Feel free to alter this value to suit your needs.
         default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
-    )}
+        conn_max_age=600)
+    }
+    }
 
 
 # Password validation
