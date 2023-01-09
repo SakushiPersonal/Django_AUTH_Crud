@@ -26,6 +26,7 @@ def singup (request):
             return render(request, 'singup.html', {'form': UserCreationForm, 'error': 'Password does not match'})
 
 
+#login required for these:
 @ login_required
 def task(request):
     tasks = get_list_or_404(Task, user=request.user, completed__isnull=True)
