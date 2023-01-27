@@ -11,4 +11,6 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 
-python manage.py createsuperuser --noinput
+python manage.py createsuperuser --username --noinput
+python manage.py createsuperuser --password --noinput
+python manage.py createsuperuser --email --noinput
