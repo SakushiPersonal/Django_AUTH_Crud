@@ -11,11 +11,7 @@
 
 
     <div class="container mt-5">
-        {% if tasks.completed__isnull = False %}
-            <h1>Completed Tasks</h1>
-        {% else %}
-            <h1>Pending Tasks</h1>
-        {% endif %}
+        <h1>Pending Tasks List</h1>
         {% for task in tasks %}
             <div class="card text-bg-dark border-light mb-3">
                 {% if task.important %}
