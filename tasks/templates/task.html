@@ -11,7 +11,7 @@
 
 
     <div class="container mt-5">
-        {% if tasks.completed %}
+        {% if tasks.completed__isnull = False %}
             <h1>Completed Tasks</h1>
         {% else %}
             <h1>Pending Tasks</h1>
