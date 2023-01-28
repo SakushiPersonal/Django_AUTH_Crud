@@ -29,13 +29,15 @@ def singup (request):
 #login required for these:
 @ login_required
 def task(request):
-    tasks = get_list_or_404(Task, user=request.user, completed__isnull=True)
+    #tasks = get_list_or_404(Task, user=request.user, completed__isnull=True)
+    tasks = Task.objects.filter(user=request.user, completed__isnull=True)
     return render(request, 'task.html', {'tasks': tasks})
 
 
 @ login_required
 def completed_tasks(request):
-    tasks = get_list_or_404(Task, user=request.user, completed__isnull=False)
+    #tasks = get_list_or_404(Task, user=request.user, completed__isnull=False)
+    tasks = Task.objects.filter(user=request.user, completed__isnull=False)
     return render(request, 'task.html', {'tasks': tasks})
 
 
